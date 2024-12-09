@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Reserva</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}"/> <!-- Puedes agregar tu propio CSS si es necesario -->
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto mt-10">
+        <div class="max-w-md mx-auto bg-white p-8 border border-gray-300 shadow-lg rounded-lg">
+            <h1 class="text-2xl font-semibold mb-6 text-center">Crear Nueva Reserva</h1>
+
+            <form th:action="@{/reservas/guardar}" th:object="${reserva}" method="post">
+                <div class="mb-4">
+                    <label for="cliente" class="block text-gray-700">Cliente:</label>
+                    <input type="text" id="cliente" th:field="*{cliente}" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Nombre del cliente" required>
+                </div>
+
+                <div class="mb-4">
+                    <label for="pelicula" class="block text-gray-700">Película:</label>
+                    <select id="pelicula" th:field="*{pelicula}" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option th:each="pelicula : ${peliculas}" th:value="${pelicula.idPelicula}" th:text="${pelicula.nombre}">Selecciona una película</option>
+                    </select>
+                </div>
+
+                <div class="mb-4">
+                    <label for="funcion" class="block text-gray-700">Función:</label>
+                    <select id="funcion" th:field="*{funcion}" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option th:each="funcion : ${funciones}" th:value="${funcion.idFuncion}" th:text="${funcion.horario}">Selecciona una función</option>
+                    </select>
+                </div>
+
+                <div class="mb-4">
+                    <label for="cantidad" class="block text-gray-700">Cantidad de boletos:</label>
+                    <input type="number" id="cantidad" th:field="*{cantidadBoletos}" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Cantidad" min="1" required>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">Guardar Reserva</button>
+                    <a href="/reservas/lista" class="ml-4 text-blue-500 hover:underline">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

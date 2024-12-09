@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Reservas</title>
+</head>
+<body>
+    <h1>Reservas</h1>
+    
+    <table>
+    <thead>
+        <tr>
+            <th>ID Reserva</th>
+            <th>Cliente</th>
+            <th>Función</th>
+            <th>Cantidad de Boletos</th>
+            <th>Total</th>
+            <th>Fecha de Reserva</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="reserva : ${reservas}">
+            <td th:text="${reserva.idReserva}"></td>
+            <td th:text="${reserva.cliente != null ? reserva.cliente.nombre : 'No Cliente'}"></td>
+            <span th:text="${reserva.funcion != null ? reserva.funcion.pelicula.nombre : 'No Función'}"></span>
+            <td th:text="${reserva.cantidadBoletos}"></td>
+            <td th:text="${reserva.total}"></td>
+            <td th:text="${reserva.fechaReserva}"></td>
+            <td th:text="${reserva.pelicula != null ? reserva.pelicula.titulo : 'No Película'}"></td>
+        </tr>
+    </tbody>
+</table>
+    
+</body>
+</html>
+
+

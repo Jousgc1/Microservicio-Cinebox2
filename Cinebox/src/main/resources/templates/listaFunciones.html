@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Funciones</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/SectionHome.css}">
+    <style>
+        
+        .bg-dark-transparent {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .table-container {
+            margin-top: 20px;
+        }
+        .btn-custom {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-3xl font-bold mb-4 text-center">Listado de Funciones</h1>
+        <div class="table-container">
+            <table class="table table-dark table-striped bg-dark-transparent">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Película</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Capacidad</th>
+                        <th>Precio</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="funcion : ${funciones}">
+                        <td th:text="${funcion.idFuncion}"></td>
+                        <td th:text="${funcion.pelicula.nombre}"></td>
+                        <td th:text="${funcion.fecha}"></td>
+                        <td th:text="${funcion.hora}"></td>
+                        <td th:text="${funcion.capacidad}"></td>
+                        <td th:text="${funcion.precio}"></td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="text-center mt-4">
+            <a href="/funciones/crear" class="btn btn-success">Crear Nueva Función</a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Películas</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-6">
+    <h1 class="text-3xl font-bold mb-4 text-center">Listado de Películas</h1>
+    <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <li th:each="pelicula : ${peliculas}" class="bg-white shadow-lg rounded-lg p-4 transition-transform transform hover:scale-105">
+            <h3 class="text-xl font-semibold" th:text="${pelicula.nombre}"></h3>
+            <p class="text-gray-600 mt-2" th:text="${pelicula.descripcion}"></p>
+            <img th:src="${pelicula.imagenUrl}" alt="Imagen de la película" class="mt-2 rounded" style="width: 100%; height: auto;"/>
+            <p class="text-gray-700 mt-2">Categoría: <span th:text="${pelicula.categoria.nombre}"></span></p>
+            
+           <a th:href="@{/peliculas/eliminar/{id}(id=${pelicula.idPelicula})}" 
+   onclick="return confirm('¿Estás seguro de que deseas eliminar esta película?');" 
+   class="text-red-500 hover:underline ml-2">Eliminar</a>
+        </li>
+    </ul>
+    <div class="mt-4">
+            <a href="/peliculas/crear" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Crear Nuevo Combo</a>
+        </div>
+        
+        
+</body>
+</html>

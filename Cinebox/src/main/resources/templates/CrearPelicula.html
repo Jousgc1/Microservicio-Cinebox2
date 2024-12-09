@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Nueva Película</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto mt-10">
+        <h1 class="text-3xl font-bold mb-5">Crear Nueva Película</h1>
+        
+        <form th:action="@{/peliculas/crear}" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <!-- Nombre de la película -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="nombre">
+                    Nombre de la Película
+                </label>
+                <input type="text" id="nombre" name="nombre" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+            </div>
+
+            <!-- Descripción de la película -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="descripcion">
+                    Descripción
+                </label>
+                <textarea id="descripcion" name="descripcion" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required></textarea>
+            </div>
+
+            <!-- Categoría de la película -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="categoria">
+                    Categoría
+                </label>
+                <input type="text" id="categoria" name="categoria" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+            </div>
+
+            <!-- Función (selecciona una función asociada si existe una relación) -->
+           
+
+            <!-- Imagen URL -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="imagenUrl">
+                    URL de la Imagen
+                </label>
+                <input type="url" id="imagenUrl" name="imagenUrl" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+
+            <!-- Botón para guardar la película -->
+            <div class="flex justify-end">
+                <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+                    Guardar Película
+                </button>
+            </div>
+        </form>
+        
+        <!-- Enlace para volver al listado de películas -->
+        <div class="mt-4">
+            <a href="/peliculas" class="text-blue-500 hover:underline">Volver al listado de películas</a>
+        </div>
+    </div>
+</body>
+</html>

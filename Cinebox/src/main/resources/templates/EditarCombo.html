@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Combo</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto mt-10 p-5 bg-white shadow-md rounded">
+        <h1 class="text-2xl font-bold mb-5">Editar Combo</h1>
+
+        <!-- Formulario para editar el combo -->
+        <form th:action="@{/combos/actualizar/{id}(id=${combo.idCombo})}" method="post">
+
+            <!-- Campo oculto para el ID del combo -->
+            <input type="hidden" name="id" th:value="${combo.idCombo}"/>
+
+            <!-- Campo de Nombre -->
+            <div>
+                <label for="nombre" class="block text-gray-700">Nombre</label>
+                <input type="text" id="nombre" name="nombre" th:value="${combo.nombre}"
+                       class="w-full mt-2 p-2 border border-gray-300 rounded" required>
+            </div>
+
+            <!-- Campo de Descripción -->
+            <div>
+                <label for="descripcion" class="block text-gray-700">Descripción</label>
+                <textarea id="descripcion" name="descripcion" class="w-full mt-2 p-2 border border-gray-300 rounded" 
+                          required th:text="${combo.descripcion}"></textarea>
+            </div>
+
+            <!-- Campo de Precio -->
+            <div>
+                <label for="precio" class="block text-gray-700">Precio</label>
+                <input type="number" id="precio" name="precio" th:value="${combo.precio}"
+                       class="w-full mt-2 p-2 border border-gray-300 rounded" required>
+            </div>
+
+            <!-- Botón para Guardar Cambios -->
+            <div class="flex justify-end">
+                <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Guardar Cambios</button>
+            </div>
+        </form>
+
+        <!-- Enlace para cancelar y volver al listado -->
+        <div class="mt-4">
+            <a href="/combos" class="text-blue-500 hover:underline">Cancelar</a>
+        </div>
+    </div>
+</body>
+</html>
