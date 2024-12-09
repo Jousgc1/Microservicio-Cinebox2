@@ -15,6 +15,14 @@ spring:
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 
-  # Configuración MVC
   server:
-    port: 8080  # Aquí está el puerto correcto
+    port: 8080  # Configuración del puerto para el servidor embebido
+
+  eureka:
+    client:
+      fetch-registry: true
+      register-with-eureka: true
+      service-url:
+        default-zone: http://localhost:8761/eureka
+    instance:
+      hostname: localhost
